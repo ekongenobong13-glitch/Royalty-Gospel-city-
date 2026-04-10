@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Royalty Gospel City Int'l — Bringing Men Back To Honour</title>
+<meta name="description" content="Royalty Gospel City International — Bringing Men Back To Honour. Akwa Ibom State, Nigeria."/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Audiowide&family=Teko:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<style>
+/* ═══════════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════════ */
+:root{
+  --black:#0A0A0F;--black-soft:#0F0F1A;--black-mid:#141426;
+  --blue-deep:#0D1B6E;--blue-royal:#1A2FD4;--blue-glow:#2B4AFF;--blue-light:#4D6FFF;
+  --purple-deep:#1E0845;--purple-royal:#5E17EB;--purple-glow:#8B5CF6;--purple-light:#A78BFA;
+  --crimson:#B91230;--crimson-glow:#FF1744;
+  --gold:#C9A84C;--gold-light:#F0D080;--gold-dim:#8A6E30;
+  --white:#FFFFFF;--off-white:#F0F0FF;
+  --muted:rgba(255,255,255,.52);--muted-sm:rgba(255,255,255,.3);
+  --g-bp:linear-gradient(135deg,#1A2FD4 0%,#5E17EB 100%);
+  --g-glow:linear-gradient(135deg,#2B4AFF 0%,#8B5CF6 52%,#FF1744 100%);
+  --g-gold:linear-gradient(90deg,#8A6E30 0%,#F0D080 50%,#8A6E30 100%);
+  --g-dark:linear-gradient(180deg,#0A0A0F 0%,#0F0F1A 100%);
+  --glass:rgba(255,255,255,.035);--gborder:rgba(255,255,255,.075);
+  --glass-hover:rgba(255,255,255,.065);
+  --shadow-glow:0 0 60px rgba(43,74,255,.18);
+  --shadow-purple:0 20px 60px rgba(94,23,235,.25);
+  --f-hero:'Orbitron',sans-serif;
+  --f-title:'Audiowide',sans-serif;
+  --f-cta:'Teko',sans-serif;
+  --f-body:'Space Grotesk',sans-serif;
+  --ease-spring:cubic-bezier(.16,1,.3,1);
+  --ease-out:cubic-bezier(.25,.46,.45,.94);
+  --r:6px;
+}
+
+/* ═══════════════════════════════════════════════
+   RESET
+═══════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:auto;-webkit-tap-highlight-color:transparent}
+body{background:var(--black);color:var(--white);font-family:var(--f-body);
+  overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block;object-fit:cover}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+section{position:relative;overflow:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--black)}
+::-webkit-scrollbar-thumb{background:var(--purple-royal);border-radius:2px}
+
+/* ═══════════════════════════════════════════════
+   PRELOADER
+═══════════════════════════════════════════════ */
+#preloader{
+  position:fixed;inset:0;z-index:9999;
+  background:radial-gradient(ellipse at 50% 40%,#0E082A 0%,var(--black) 70%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.2rem;
+  transition:opacity 1s var(--ease-spring),visibility 1s
+}
+#preloader.gone{opacity:0;visibility:hidden;pointer-events:none}
+.pl-ring{width:130px;height:130px;border-radius:50%;position:relative;
+  animation:plSpin 3s ease-in-out infinite}
+.pl-ring::before{content:'';position:absolute;inset:-3px;border-radius:50%;
+  background:conic-gradient(from 0deg,transparent 0deg,#2B4AFF 90deg,#8B5CF6 180deg,#FF1744 270deg,transparent 360deg);
+  animation:plRotate 2s linear infinite}
+.pl-ring::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--black)}
+@keyframes plRotate{to{transform:rotate(360deg)}}
+.pl-logo-inner{position:absolute;inset:6px;border-radius:50%;overflow:hidden;z-index:2;display:flex;align-items:center;justify-content:center}
+.pl-logo-inner img{width:80%;height:80%;object-fit:contain;animation:plPulse 2s ease-in-out infinite}
+@keyframes plPulse{0%,100%{transform:scale(1);filter:drop-shadow(0 0 10px rgba(43,74,255,.7))}
+  50%{transform:scale(1.08);filter:drop-shadow(0 0 30px rgba(139,92,246,1))}}
+.pl-bar{width:240px;height:1.5px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden}
+.pl-fill{height:100%;background:var(--g-glow);width:0;
+  animation:plFill 2.6s var(--ease-spring) forwards;border-radius:2px}
+@keyframes plFill{to{width:100%}}
+.pl-text{font-family:var(--f-title);font-size:.65rem;letter-spacing:.35em;
+  color:var(--muted-sm);text-transform:uppercase;animation:plBlink 2s ease-in-out infinite}
+@keyframes plBlink{0%,100%{opacity:.4}50%{opacity:1}}
+
+/* ═══════════════════════════════════════════════
+   NAVBAR
+═══════════════════════════════════════════════ */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:1.25rem 3rem;display:flex;align-items:center;justify-content:space-between;
+  transition:all .5s var(--ease-out)
+}
+#nav.stuck{
+  background:rgba(10,10,15,.94);backdrop-filter:blur(28px) saturate(180%);
+  padding:.9rem 3rem;border-bottom:1px solid var(--gborder)
+}
+.nb{display:flex;align-items:center;gap:.8rem;cursor:pointer}
+.nb img{width:44px;height:44px;border-radius:50%;
+  filter:drop-shadow(0 0 8px rgba(43,74,255,.4));
+  transition:filter .3s}
+.nb:hover img{filter:drop-shadow(0 0 16px rgba(139,92,246,.7))}
+.nb-t{font-family:var(--f-hero);font-size:.64rem;font-weight:800;letter-spacing:.09em;
+  background:var(--g-glow);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.35}
+.nl{display:flex;align-items:center;gap:2.4rem;list-style:none}
+.nl a{font-family:var(--f-title);font-size:.67rem;letter-spacing:.13em;color:var(--muted);
+  text-transform:uppercase;transition:color .3s,letter-spacing .3s;position:relative;padding-bottom:2px}
+.nl a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;
+  background:var(--g-glow);transition:width .35s var(--ease-spring)}
+.nl a:hover{color:var(--white)}
+.nl a:hover::after{width:100%}
+.n-cta{font-family:var(--f-cta);font-size:1.05rem;font-weight:600;letter-spacing:.12em;
+  padding:.6rem 1.8rem;background:var(--g-bp);border-radius:var(--r);color:var(--white);
+  transition:transform .3s var(--ease-spring),box-shadow .3s;position:relative;overflow:hidden}
+.n-cta::before{content:'';position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.1),transparent);
+  opacity:0;transition:opacity .3s}
+.n-cta:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(94,23,235,.55)}
+.n-cta:hover::before{opacity:1}
+.hbg{display:none;flex-direction:column;gap:5px;padding:4px;cursor:pointer}
+.hbg span{width:24px;height:2px;background:var(--white);border-radius:2px;transition:all .35s var(--ease-spring)}
+.hbg.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hbg.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hbg.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* Mobile Menu */
+.mmenu{
+  position:fixed;inset:0;z-index:999;
+  background:rgba(10,10,15,.98);backdrop-filter:blur(40px);
+  flex-direction:column;align-items:center;justify-content:center;gap:2.8rem;
+  display:none;transition:opacity .4s
+}
+.mmenu.open{display:flex}
+.mmenu a{font-family:var(--f-hero);font-size:1.5rem;font-weight:700;letter-spacing:.08em;
+  color:var(--muted);text-transform:uppercase;transition:color .3s,letter-spacing .3s;
+  position:relative}
+.mmenu a::after{content:'';position:absolute;bottom:-4px;left:50%;width:0;height:2px;
+  background:var(--g-glow);transform:translateX(-50%);transition:width .35s var(--ease-spring)}
+.mmenu a:hover{color:var(--white)}
+.mmenu a:hover::after{width:100%}
+.m-close{position:absolute;top:1.6rem;right:2rem;font-size:2.2rem;color:var(--muted);
+  transition:color .3s,transform .3s}
+.m-close:hover{color:var(--white);transform:rotate(90deg)}
+
+/* ═══════════════════════════════════════════════
+   LAYOUT UTILS
+═══════════════════════════════════════════════ */
+.sp{padding:8rem 0}
+.sp-sm{padding:5rem 0}
+.cx{width:100%;max-width:1340px;margin:0 auto;padding:0 3rem}
+
+.lbl{font-family:var(--f-title);font-size:.62rem;letter-spacing:.38em;color:var(--gold);
+  text-transform:uppercase;margin-bottom:.9rem;display:flex;align-items:center;gap:.8rem}
+.lbl::before{content:'';width:32px;height:1px;
+  background:linear-gradient(90deg,var(--gold),transparent)}
+.sec-h{font-family:var(--f-hero);font-size:clamp(1.9rem,3.5vw,3.2rem);font-weight:800;
+  letter-spacing:-.02em;line-height:1.12;margin-bottom:1.5rem}
+.sec-h .grd{background:var(--g-glow);-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text}
+.sec-sub{font-family:var(--f-body);font-size:1rem;color:var(--muted);line-height:1.75;max-width:520px}
+
+/* ─── Reveal system (Framer-motion style) ─── */
+[data-rv]{opacity:0;will-change:transform,opacity;transition-timing-function:var(--ease-spring);transition-duration:.9s;transition-property:opacity,transform}
+[data-rv="up"]    {transform:translateY(56px)}
+[data-rv="left"]  {transform:translateX(-60px)}
+[data-rv="right"] {transform:translateX(60px)}
+[data-rv="scale"] {transform:scale(.88)}
+[data-rv="fade"]  {transform:none}
+[data-rv].in{opacity:1;transform:none}
+[data-delay="1"]{transition-delay:.1s}[data-delay="2"]{transition-delay:.2s}
+[data-delay="3"]{transition-delay:.3s}[data-delay="4"]{transition-delay:.4s}
+[data-delay="5"]{transition-delay:.5s}[data-delay="6"]{transition-delay:.6s}
+
+/* ═══════════════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════════════ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
+  font-family:var(--f-cta);font-size:1.15rem;font-weight:600;letter-spacing:.18em;
+  padding:.9rem 2.6rem;border-radius:var(--r);color:var(--white);
+  position:relative;overflow:hidden;transition:transform .35s var(--ease-spring),box-shadow .35s;
+  text-transform:uppercase;cursor:pointer;border:none}
+.btn::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.12) 50%,transparent 100%);
+  transform:translateX(-100%);transition:transform .55s var(--ease-spring)}
+.btn:hover::after{transform:translateX(100%)}
+.btn:hover{transform:translateY(-3px) scale(1.02)}
+.btn-primary{background:var(--g-bp)}
+.btn-primary:hover{box-shadow:0 16px 45px rgba(43,74,255,.55)}
+.btn-outline{background:transparent;border:1px solid rgba(255,255,255,.18)}
+.btn-outline:hover{background:rgba(139,92,246,.1);border-color:var(--purple-glow);
+  box-shadow:0 10px 32px rgba(139,92,246,.3)}
+.btn-gold{background:linear-gradient(135deg,var(--gold-dim),var(--gold),var(--gold-dim))}
+.btn-gold:hover{box-shadow:0 12px 35px rgba(201,168,76,.4)}
+
+/* ═══════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════ */
+#hero{
+  min-height:100svh;display:grid;grid-template-columns:1fr 1fr;
+  background:var(--black);position:relative
+}
+/* Ambient glow orbs */
+.hero-orb{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+.hero-orb-1{width:600px;height:600px;top:-15%;left:-8%;
+  background:radial-gradient(circle,rgba(26,47,212,.2) 0%,transparent 65%)}
+.hero-orb-2{width:500px;height:500px;bottom:-10%;right:40%;
+  background:radial-gradient(circle,rgba(94,23,235,.15) 0%,transparent 65%)}
+.hero-orb-3{width:400px;height:400px;top:30%;right:-5%;
+  background:radial-gradient(circle,rgba(255,23,68,.1) 0%,transparent 65%)}
+
+.hero-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:9rem 4rem 5rem 5rem;position:relative;z-index:2
+}
+.hero-eyebrow{display:flex;align-items:center;gap:.85rem;margin-bottom:2rem}
+.hero-eyebrow-line{width:40px;height:1px;background:var(--g-glow)}
+.hero-eyebrow-text{font-family:var(--f-title);font-size:.62rem;letter-spacing:.32em;
+  color:var(--gold);text-transform:uppercase}
+.hero-h{font-family:var(--f-hero);font-size:clamp(2.5rem,4.8vw,5.5rem);font-weight:900;
+  line-height:1.02;letter-spacing:-.02em;margin-bottom:1.2rem}
+.hero-h .l1{display:block;color:var(--white)}
+.hero-h .l2{display:block;background:var(--g-glow);-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text}
+.hero-tag{font-family:var(--f-title);font-size:clamp(.82rem,1.3vw,.98rem);
+  letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin-bottom:.9rem}
+.hero-sup{font-family:var(--f-body);font-size:clamp(.9rem,1.2vw,1.06rem);
+  color:var(--muted);line-height:1.75;max-width:440px;margin-bottom:3rem}
+.hero-ctas{display:flex;gap:1.2rem;flex-wrap:wrap;margin-bottom:3.5rem}
+
+/* Stats */
+.hero-stats{display:flex;gap:0;border-top:1px solid var(--gborder);padding-top:2rem;margin-top:auto}
+.hero-stat{flex:1;padding-right:2rem;border-right:1px solid var(--gborder)}
+.hero-stat:last-child{border-right:none;padding-right:0;padding-left:2rem}
+.hero-stat:first-child{padding-left:0}
+.stat-num{font-family:var(--f-hero);font-size:clamp(1.5rem,2.5vw,2.2rem);font-weight:900;
+  background:var(--g-glow);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  display:block;line-height:1;margin-bottom:.35rem}
+.stat-label{font-family:var(--f-body);font-size:.72rem;letter-spacing:.15em;
+  color:var(--muted);text-transform:uppercase;line-height:1.4}
+
+/* Hero right */
+.hero-right{position:relative;overflow:hidden}
+.hero-right::before{content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,var(--black) 0%,rgba(10,10,15,.1) 30%);z-index:2;pointer-events:none}
+.hero-right::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(10,10,15,.5) 0%,transparent 35%,rgba(10,10,15,.6) 100%);
+  z-index:2;pointer-events:none}
+#heroImg{width:100%;height:100%;object-fit:cover;transform-origin:center}
+
+/* ═══════════════════════════════════════════════
+   INFO BAR
+═══════════════════════════════════════════════ */
+#infobar{
+  background:rgba(255,255,255,.022);
+  border-top:1px solid var(--gborder);border-bottom:1px solid var(--gborder);
+  padding:1.1rem 0;backdrop-filter:blur(16px)
+}
+.ib-inner{display:flex;align-items:center;justify-content:center;
+  gap:3.5rem;flex-wrap:wrap;padding:0 3rem}
+.ib-item{display:flex;align-items:center;gap:.75rem}
+.ib-item i{font-size:.88rem;color:var(--gold)}
+.ib-text{font-family:var(--f-title);font-size:.68rem;letter-spacing:.1em;
+  color:var(--muted);text-transform:uppercase}
+.ib-text strong{color:var(--white);font-weight:400}
+
+/* ═══════════════════════════════════════════════
+   ABOUT
+═══════════════════════════════════════════════ */
+#about{background:var(--black-soft)}
+.about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:6rem;align-items:center}
+.about-img-shell{position:relative}
+.about-img-frame{border-radius:8px;overflow:hidden;position:relative}
+.about-img-frame::before{content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 55%,rgba(10,10,15,.85) 100%);z-index:1}
+.about-img-frame img{width:100%;aspect-ratio:4/5;transition:transform 1.3s var(--ease-out)}
+.about-img-frame:hover img{transform:scale(1.05)}
+.about-tag-pill{
+  position:absolute;bottom:-1.5rem;right:-1.5rem;padding:1.5rem 2rem;
+  background:rgba(10,10,15,.85);backdrop-filter:blur(24px);
+  border:1px solid var(--gborder);border-radius:var(--r);z-index:3;text-align:center;
+  min-width:130px
+}
+.atp-num{font-family:var(--f-hero);font-size:2rem;font-weight:900;display:block;
+  background:var(--g-glow);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.atp-lbl{font-family:var(--f-title);font-size:.58rem;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.about-decl{
+  background:var(--glass);border:1px solid var(--gborder);
+  border-left:3px solid var(--blue-glow);border-radius:var(--r);
+  padding:2rem;margin-bottom:2.5rem;
+  font-family:var(--f-body);font-size:1.04rem;font-style:italic;
+  color:rgba(255,255,255,.82);line-height:1.8
+}
+.about-pillars{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:2rem}
+.ap{background:var(--glass);border:1px solid var(--gborder);border-radius:var(--r);
+  padding:1.5rem;transition:border-color .35s,transform .35s var(--ease-spring),background .35s;
+  cursor:default}
+.ap:hover{border-color:rgba(94,23,235,.5);transform:translateY(-5px);background:var(--glass-hover)}
+.ap-icon{font-size:1.4rem;margin-bottom:.75rem;display:block;
+  background:var(--g-glow);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ap-title{font-family:var(--f-title);font-size:.72rem;letter-spacing:.1em;
+  color:var(--white);margin-bottom:.4rem;text-transform:uppercase}
+.ap-desc{font-family:var(--f-body);font-size:.82rem;color:var(--muted);line-height:1.65}
+
+/* ═══════════════════════════════════════════════
+   GALLERY — Folder Reveal System
+═══════════════════════════════════════════════ */
+#gallery{background:var(--black)}
+.gal-folders{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1.4rem;margin-top:3.5rem
+}
+.gal-folder{
+  position:relative;cursor:pointer;border-radius:8px;overflow:hidden;
+  border:1px solid var(--gborder);
+  transition:transform .4s var(--ease-spring),border-color .35s,box-shadow .35s
+}
+.gal-folder::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 35%,rgba(10,10,15,.92) 100%);
+  z-index:2;pointer-events:none
+}
+.gal-folder:hover{transform:translateY(-8px) scale(1.02);
+  border-color:rgba(43,74,255,.45);
+  box-shadow:0 24px 60px rgba(43,74,255,.22),0 0 0 1px rgba(43,74,255,.2)}
+.gal-folder img{width:100%;aspect-ratio:3/4;object-fit:cover;
+  transition:transform 1s var(--ease-spring),filter .5s}
+.gal-folder:hover img{transform:scale(1.1);filter:brightness(1.08)}
+.gal-folder-info{
+  position:absolute;bottom:0;left:0;right:0;padding:1.4rem;z-index:3;
+  transform:translateY(8px);opacity:0;
+  transition:transform .4s var(--ease-spring),opacity .4s
+}
+.gal-folder:hover .gal-folder-info{transform:translateY(0);opacity:1}
+.gf-label{font-family:var(--f-title);font-size:.65rem;letter-spacing:.2em;
+  color:rgba(255,255,255,.9);text-transform:uppercase;margin-bottom:.3rem}
+.gf-sub{font-family:var(--f-body);font-size:.78rem;color:var(--muted-sm)}
+.gal-folder-icon{
+  position:absolute;top:1rem;right:1rem;z-index:3;
+  width:36px;height:36px;background:rgba(10,10,15,.6);backdrop-filter:blur(12px);
+  border:1px solid var(--gborder);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--white);
+  transform:scale(0);transition:transform .35s var(--ease-spring) .1s
+}
+.gal-folder:hover .gal-folder-icon{transform:scale(1)}
+
+/* Lightbox */
+#lb{
+  position:fixed;inset:0;z-index:9998;
+  background:rgba(5,5,10,.96);backdrop-filter:blur(20px);
+  display:none;align-items:center;justify-content:center;flex-direction:column;
+  padding:2rem
+}
+#lb.open{display:flex}
+#lb-content{position:relative;max-width:900px;width:100%}
+#lb-img{
+  max-width:100%;max-height:80vh;border-radius:8px;
+  object-fit:contain;display:block;margin:0 auto;
+  box-shadow:0 0 100px rgba(43,74,255,.25);
+  animation:lbIn .5s var(--ease-spring)
+}
+@keyframes lbIn{from{transform:scale(.88);opacity:0}to{transform:scale(1);opacity:1}}
+#lb-close{
+  position:absolute;top:-3rem;right:0;font-size:1.8rem;color:var(--muted);
+  transition:color .3s,transform .3s;width:40px;height:40px;
+  display:flex;align-items:center;justify-content:center
+}
+#lb-close:hover{color:var(--white);transform:rotate(90deg)}
+#lb-nav-bar{
+  display:flex;align-items:center;gap:1.5rem;margin-top:1.8rem;justify-content:center
+}
+.lb-nav-btn{width:46px;height:46px;background:var(--glass);border:1px solid var(--gborder);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  color:var(--white);font-size:.9rem;transition:background .3s,border-color .3s,transform .3s}
+.lb-nav-btn:hover{background:rgba(43,74,255,.22);border-color:var(--blue-glow);transform:scale(1.1)}
+#lb-dots{display:flex;gap:.6rem}
+.lb-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.22);
+  transition:background .3s,transform .3s;cursor:pointer}
+.lb-dot.active{background:var(--white);transform:scale(1.3)}
+
+/* ═══════════════════════════════════════════════
+   SERMONS
+═══════════════════════════════════════════════ */
+#sermons{background:var(--black-soft)}
+.sermons-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-top:3.5rem}
+.sc{background:var(--glass);border:1px solid var(--gborder);border-radius:8px;overflow:hidden;
+  cursor:pointer;transition:transform .45s var(--ease-spring),box-shadow .4s,border-color .3s;
+  position:relative}
+.sc::before{content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(43,74,255,.06),rgba(94,23,235,.06));
+  opacity:0;transition:opacity .4s;z-index:0}
+.sc:hover{transform:translateY(-10px);border-color:rgba(94,23,235,.5);
+  box-shadow:0 30px 70px rgba(26,47,212,.3),0 0 0 1px rgba(94,23,235,.3)}
+.sc:hover::before{opacity:1}
+.sc-img-wrap{overflow:hidden;position:relative}
+.sc-img{width:100%;aspect-ratio:16/9;transition:transform .8s var(--ease-spring)}
+.sc:hover .sc-img{transform:scale(1.08)}
+.sc-play-ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,.35);opacity:0;transition:opacity .35s}
+.sc:hover .sc-play-ov{opacity:1}
+.sc-play-icon{width:54px;height:54px;background:var(--g-glow);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--white);
+  box-shadow:0 0 35px rgba(43,74,255,.7);
+  transform:scale(.8);transition:transform .35s var(--ease-spring)}
+.sc:hover .sc-play-icon{transform:scale(1)}
+.sc-body{padding:1.5rem;position:relative;z-index:1}
+.sc-tag{font-family:var(--f-title);font-size:.58rem;letter-spacing:.2em;
+  color:var(--gold);text-transform:uppercase;margin-bottom:.6rem}
+.sc-title{font-family:var(--f-title);font-size:.96rem;color:var(--white);
+  margin-bottom:.7rem;line-height:1.45}
+.sc-desc{font-family:var(--f-body);font-size:.82rem;color:var(--muted);
+  line-height:1.65;margin-bottom:1.4rem}
+.btn-listen{font-family:var(--f-cta);font-size:.98rem;font-weight:600;letter-spacing:.15em;
+  padding:.52rem 1.4rem;background:transparent;border:1px solid rgba(255,255,255,.14);
+  border-radius:4px;color:var(--white);cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;
+  transition:background .3s,border-color .3s,box-shadow .3s}
+.btn-listen:hover{background:rgba(43,74,255,.14);border-color:var(--blue-glow);
+  box-shadow:0 5px 22px rgba(43,74,255,.22)}
+
+/* ═══════════════════════════════════════════════
+   PODCAST — REAL AUDIO PLAYER
+═══════════════════════════════════════════════ */
+#podcast{background:var(--black-mid)}
+.pod-scroll{overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  scroll-snap-type:x mandatory;padding-bottom:1.5rem;margin-top:3.5rem;cursor:grab}
+.pod-scroll:active{cursor:grabbing}
+.pod-scroll::-webkit-scrollbar{display:none}
+.pod-track{display:flex;gap:1.4rem;padding:.5rem .2rem 1rem;width:max-content}
+
+.pod-card{
+  width:300px;flex-shrink:0;scroll-snap-align:start;
+  background:var(--glass);border:1px solid var(--gborder);border-radius:10px;
+  padding:1.8rem;backdrop-filter:blur(20px);
+  transition:transform .35s var(--ease-spring),border-color .35s,box-shadow .35s;
+  position:relative;overflow:hidden
+}
+.pod-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
+  background:conic-gradient(from 0deg at 50% 50%,transparent,rgba(94,23,235,.04) 60deg,transparent 120deg);
+  animation:rotateGlow 10s linear infinite;pointer-events:none}
+@keyframes rotateGlow{to{transform:rotate(360deg)}}
+.pod-card.active{border-color:rgba(43,74,255,.6);
+  box-shadow:0 0 40px rgba(43,74,255,.18)}
+.pod-card:hover{transform:translateY(-5px);border-color:rgba(94,23,235,.4)}
+.pod-card.error{border-color:rgba(255,23,68,.3)}
+
+.pod-ep{font-family:var(--f-hero);font-size:.56rem;letter-spacing:.22em;
+  color:var(--gold);margin-bottom:.5rem;text-transform:uppercase}
+.pod-title{font-family:var(--f-title);font-size:.94rem;color:var(--white);
+  margin-bottom:.4rem;line-height:1.4}
+.pod-dur{font-family:var(--f-body);font-size:.72rem;color:var(--muted);margin-bottom:1.2rem}
+
+/* Waveform */
+.waveform{display:flex;align-items:center;gap:3px;height:38px;margin-bottom:1.2rem}
+.wb{width:3px;background:rgba(255,255,255,.16);border-radius:2px;transition:background .3s,transform .1s}
+.pod-card.active .wb{background:var(--blue-glow);
+  animation:wave var(--ws,.7s) ease-in-out infinite alternate;animation-delay:var(--wd,0s)}
+@keyframes wave{from{transform:scaleY(.2)}to{transform:scaleY(1)}}
+
+/* Progress */
+.pod-prog{width:100%;height:3.5px;background:rgba(255,255,255,.09);border-radius:3px;
+  margin-bottom:1rem;overflow:hidden;cursor:pointer;position:relative}
+.pod-prog:hover{height:5px;margin-top:-0.5px}
+.pod-prog-fill{height:100%;background:var(--g-glow);border-radius:3px;
+  width:0%;transition:width .25s linear}
+.pod-prog-thumb{position:absolute;top:50%;right:-5px;width:11px;height:11px;
+  background:var(--white);border-radius:50%;transform:translate(-50%,-50%) scale(0);
+  transition:transform .25s var(--ease-spring);pointer-events:none}
+.pod-prog:hover .pod-prog-thumb{transform:translate(-50%,-50%) scale(1)}
+
+.pod-controls{display:flex;align-items:center;justify-content:space-between;gap:.8rem}
+.pod-time{font-family:var(--f-body);font-size:.68rem;color:var(--muted);min-width:85px}
+.pod-btn-group{display:flex;align-items:center;gap:.6rem}
+.pod-skip{width:34px;height:34px;background:transparent;border:1px solid rgba(255,255,255,.12);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  color:var(--muted);font-size:.75rem;cursor:pointer;
+  transition:border-color .3s,color .3s,transform .25s}
+.pod-skip:hover{border-color:rgba(255,255,255,.35);color:var(--white);transform:scale(1.1)}
+.pod-play-btn{width:44px;height:44px;background:var(--g-bp);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;color:var(--white);font-size:.9rem;
+  cursor:pointer;transition:transform .3s var(--ease-spring),box-shadow .3s;border:none}
+.pod-play-btn:hover{transform:scale(1.12);box-shadow:0 8px 28px rgba(43,74,255,.55)}
+
+.pod-status{font-family:var(--f-body);font-size:.68rem;margin-top:.6rem;min-height:1rem;text-align:center}
+.pod-status.loading{color:var(--gold);animation:pulse 1.5s ease-in-out infinite}
+.pod-status.error{color:var(--crimson-glow)}
+.pod-status.ready{color:var(--muted)}
+@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+
+/* ═══════════════════════════════════════════════
+   PASTOR
+═══════════════════════════════════════════════ */
+#pastor{background:var(--black-soft)}
+.pastor-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.pastor-sm-label{font-family:var(--f-title);font-size:.62rem;letter-spacing:.32em;
+  color:var(--gold);text-transform:uppercase;margin-bottom:.6rem}
+.pastor-name{font-family:var(--f-hero);font-size:clamp(1.5rem,2.9vw,2.6rem);
+  font-weight:900;line-height:1.08;color:var(--white);margin-bottom:2rem}
+.pastor-quote{position:relative;margin-bottom:2.5rem;padding:2rem;
+  background:var(--glass);border:1px solid var(--gborder);border-radius:var(--r)}
+.pq-mark{position:absolute;top:-.8rem;left:1.2rem;font-family:Georgia,serif;
+  font-size:5rem;line-height:1;color:var(--blue-glow);opacity:.35}
+.pq-text{font-family:var(--f-body);font-size:clamp(1.05rem,1.8vw,1.3rem);
+  font-style:italic;color:var(--white);line-height:1.65;position:relative;z-index:1}
+.pq-line{height:2px;background:var(--g-glow);margin-top:1.2rem;width:50%;
+  border-radius:2px;box-shadow:0 0 16px rgba(43,74,255,.55)}
+.pastor-img-wrap{position:relative}
+.pastor-img-frame{border-radius:8px;overflow:hidden;position:relative}
+.pastor-img-frame::before{content:'';position:absolute;inset:-2.5px;
+  background:var(--g-glow);border-radius:10px;z-index:-1}
+.pastor-img-frame img{width:100%;aspect-ratio:3/4;border-radius:8px;display:block}
+.pastor-img-glow{position:absolute;bottom:0;left:0;right:0;height:45%;
+  background:linear-gradient(0deg,var(--black-soft) 0%,transparent 100%);pointer-events:none}
+
+/* ═══════════════════════════════════════════════
+   MARQUEE — FULLY VISIBLE
+═══════════════════════════════════════════════ */
+.mq-section{
+  background:var(--black-mid);
+  padding:2.5rem 0;overflow:hidden;position:relative;
+  border-top:1px solid var(--gborder);border-bottom:1px solid var(--gborder)
+}
+.mq-section::before,.mq-section::after{content:'';position:absolute;top:0;bottom:0;
+  width:120px;z-index:2;pointer-events:none}
+.mq-section::before{left:0;background:linear-gradient(90deg,var(--black-mid),transparent)}
+.mq-section::after{right:0;background:linear-gradient(270deg,var(--black-mid),transparent)}
+.mq-track{display:flex;white-space:nowrap;will-change:transform}
+.mq-word{
+  font-family:var(--f-hero);
+  font-size:clamp(2.2rem,4.5vw,4rem);
+  font-weight:900;
+  color:var(--white);
+  opacity:.92;
+  letter-spacing:.06em;
+  line-height:1;
+  padding-right:3rem;
+  user-select:none;
+  text-shadow:0 0 40px rgba(43,74,255,.4)
+}
+.mq-word .accent{
+  background:var(--g-glow);-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text
+}
+.mq-sep{
+  font-family:var(--f-hero);font-size:clamp(2.2rem,4.5vw,4rem);font-weight:900;
+  color:var(--gold);opacity:.9;padding-right:3rem;
+  line-height:1;user-select:none
+}
+
+/* ═══════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════ */
+#footer{background:var(--black);padding-top:6rem}
+.footer-grid{max-width:1340px;margin:0 auto;padding:0 3rem 5rem;
+  display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;gap:4rem}
+.f-brand-name{font-family:var(--f-hero);font-size:.74rem;font-weight:800;letter-spacing:.09em;
+  background:var(--g-glow);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;line-height:1.35}
+.f-desc{font-family:var(--f-body);font-size:.85rem;color:var(--muted);
+  line-height:1.75;max-width:280px;margin-bottom:1.8rem}
+.f-socials{display:flex;gap:.8rem}
+.f-soc{width:40px;height:40px;background:var(--glass);border:1px solid var(--gborder);
+  border-radius:var(--r);display:flex;align-items:center;justify-content:center;
+  color:var(--muted);font-size:.88rem;cursor:pointer;
+  transition:background .3s,color .3s,border-color .3s,transform .3s}
+.f-soc:hover{background:rgba(43,74,255,.16);color:var(--white);border-color:var(--blue-glow);
+  transform:translateY(-3px)}
+.f-col-title{font-family:var(--f-title);font-size:.66rem;letter-spacing:.22em;
+  color:var(--white);text-transform:uppercase;margin-bottom:1.4rem}
+.f-links{list-style:none}
+.f-links li{margin-bottom:.75rem}
+.f-links a{font-family:var(--f-body);font-size:.85rem;color:var(--muted);
+  transition:color .3s,padding-left .3s}
+.f-links a:hover{color:var(--white);padding-left:4px}
+.f-divider{height:1px;background:var(--gborder);max-width:1340px;margin:0 auto}
+.f-bottom{max-width:1340px;margin:0 auto;padding:1.5rem 3rem;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.f-copy{font-family:var(--f-body);font-size:.75rem;color:rgba(255,255,255,.25)}
+
+/* ═══════════════════════════════════════════════
+   WHATSAPP FLOAT
+═══════════════════════════════════════════════ */
+.wa-float{position:fixed;bottom:2.5rem;right:2.5rem;width:58px;height:58px;
+  background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  z-index:900;color:var(--white);font-size:1.5rem;
+  box-shadow:0 8px 30px rgba(37,211,102,.45);
+  transition:transform .35s var(--ease-spring)}
+.wa-float::before{content:'';position:absolute;inset:-5px;border-radius:50%;
+  background:rgba(37,211,102,.25);animation:waPulse 2.5s ease-out infinite}
+@keyframes waPulse{0%{transform:scale(1);opacity:.8}100%{transform:scale(2.2);opacity:0}}
+.wa-float:hover{transform:scale(1.12)}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+@media(max-width:1200px){
+  .gal-folders{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:3rem}
+}
+@media(max-width:1024px){
+  .about-grid,.pastor-grid{grid-template-columns:1fr;gap:3.5rem}
+  .sermons-grid{grid-template-columns:1fr 1fr}
+  .hero-left{padding:8rem 3rem 4rem}
+  .cx{padding:0 2.5rem}
+}
+@media(max-width:768px){
+  #hero{grid-template-columns:1fr;min-height:100svh}
+  .hero-right{position:absolute;inset:0;z-index:0}
+  .hero-right::before{background:linear-gradient(180deg,rgba(10,10,15,.72) 0%,rgba(10,10,15,.9) 100%)}
+  .hero-left{position:relative;z-index:2;padding:7rem 1.8rem 4rem}
+  .hero-stats{border-top:1px solid var(--gborder);padding-top:1.8rem;margin-top:2.5rem}
+  .hero-stat{padding-right:1.2rem}
+  .hero-stat:last-child{padding-left:1.2rem}
+  #nav{padding:1rem 1.5rem}
+  #nav.stuck{padding:.85rem 1.5rem}
+  .nl,.n-cta{display:none}
+  .hbg{display:flex}
+  .sermons-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:2.5rem}
+  .cx{padding:0 1.5rem}
+  .sp{padding:5.5rem 0}
+  .ib-inner{gap:1.5rem;padding:0 1.5rem}
+  .about-pillars{grid-template-columns:1fr}
+  .gal-folders{grid-template-columns:repeat(2,1fr);gap:1rem}
+  .f-bottom{flex-direction:column;text-align:center}
+}
+@media(max-width:480px){
+  .hero-ctas{flex-direction:column}
+  .btn{width:100%;justify-content:center}
+  .gal-folders{grid-template-columns:1fr 1fr}
+  .hero-stats{flex-direction:column;gap:1.5rem}
+  .hero-stat{border-right:none;border-bottom:1px solid var(--gborder);padding:0 0 1.2rem}
+  .hero-stat:last-child{border-bottom:none;padding:0;padding-left:0}
+  .mq-word,.mq-sep{font-size:2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ PRELOADER ════════════════════════════════ -->
+<div id="preloader">
+  <div class="pl-ring">
+    <div class="pl-logo-inner">
+      <img src="https://i.postimg.cc/J4xL48QC/20260403-210354.png" alt="Royalty Gospel City"/>
+    </div>
+  </div>
+  <div class="pl-bar"><div class="pl-fill"></div></div>
+  <p class="pl-text">Preparing your worship experience…</p>
+</div>
+
+<!-- ══ NAVBAR ═══════════════════════════════════ -->
+<nav id="nav">
+  <div class="nb" onclick="scrollTo({top:0,behavior:'smooth'})">
+    <img src="https://i.postimg.cc/J4xL48QC/20260403-210354.png" alt="Logo"/>
+    <div class="nb-t">ROYALTY<br/>GOSPEL CITY</div>
+  </div>
+  <ul class="nl">
+    <li><a href="#about">About</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#sermons">Sermons</a></li>
+    <li><a href="#podcast">Messages</a></li>
+    <li><a href="#pastor">Pastor</a></li>
+    <li><a href="#footer">Contact</a></li>
+  </ul>
+  <a href="https://www.facebook.com/share/1HJzxbu5Jm/" target="_blank" rel="noopener" class="n-cta btn">GIVE ONLINE</a>
+  <div class="hbg" id="hbg"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mmenu" id="mmenu">
+  <button class="m-close" id="mclose" aria-label="Close menu">&times;</button>
+  <a href="#about"   onclick="cM()">About</a>
+  <a href="#gallery" onclick="cM()">Gallery</a>
+  <a href="#sermons" onclick="cM()">Sermons</a>
+  <a href="#podcast" onclick="cM()">Messages</a>
+  <a href="#pastor"  onclick="cM()">Pastor</a>
+  <a href="#footer"  onclick="cM()">Contact</a>
+</div>
+
+<!-- ══ HERO ══════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
+
+  <div class="hero-left">
+    <div class="hero-eyebrow" id="hEye">
+      <div class="hero-eyebrow-line"></div>
+      <span class="hero-eyebrow-text">Akwa Ibom State, Nigeria</span>
+    </div>
+    <h1 class="hero-h" id="hHead">
+      <span class="l1">ROYALTY</span>
+      <span class="l2">GOSPEL CITY</span>
+    </h1>
+    <p class="hero-tag" id="hTag">Bringing Men Back To Honour</p>
+    <p class="hero-sup" id="hSup">
+      Raising Lives Through the Word and the Spirit — a royal generation walking in divine authority, honour, and unstoppable purpose.
+    </p>
+    <div class="hero-ctas" id="hCtas">
+      <button class="btn btn-primary" onclick="sTo('podcast')">
+        <i class="fa fa-play"></i> WATCH SERMONS
+      </button>
+      <a href="https://www.facebook.com/share/1HJzxbu5Jm/" target="_blank" rel="noopener" class="btn btn-outline">
+        JOIN SERVICE
+      </a>
+    </div>
+
+    <!-- Stats -->
+    <div class="hero-stats" id="hStats">
+      <div class="hero-stat">
+        <span class="stat-num" data-count="1000000" data-suffix="M+" data-prefix="1">1M+</span>
+        <span class="stat-label">Lives Transformed</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-num" data-count="30" data-suffix="+">30+</span>
+        <span class="stat-label">Years of Ministry</span>
+      </div>
+      <div class="hero-stat" style="border-right:none">
+        <span class="stat-num" style="font-size:clamp(1rem,2vw,1.5rem);-webkit-text-fill-color:transparent">Month of<br>Thanksgiving</span>
+        <span class="stat-label">Season</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <img id="heroImg" src="https://i.postimg.cc/Y9WgNbS3/IMG-20260403-WA0092.jpg" alt="Apostle Dr Praise Ntia preaching"/>
+  </div>
+</section>
+
+<!-- ══ INFO BAR ══════════════════════════════════ -->
+<div id="infobar">
+  <div class="ib-inner">
+    <div class="ib-item"><i class="fa fa-sun"></i>
+      <span class="ib-text"><strong>Sunday Service</strong> — 8:00 AM</span></div>
+    <div class="ib-item"><i class="fa fa-fire"></i>
+      <span class="ib-text"><strong>Midweek Power</strong> — Wed 6:00 PM</span></div>
+    <div class="ib-item"><i class="fa fa-phone"></i>
+      <span class="ib-text"><strong>Call</strong> — +234 808 056 3199</span></div>
+    <div class="ib-item"><i class="fab fa-whatsapp" style="color:#25D366"></i>
+      <span class="ib-text">
+        <a href="https://wa.me/2348080563199" target="_blank" style="color:inherit">WhatsApp Us</a>
+      </span></div>
+  </div>
+</div>
+
+<!-- ══ ABOUT ══════════════════════════════════════ -->
+<section id="about" class="sp">
+  <div class="cx">
+    <div class="about-grid">
+      <div data-rv="left">
+        <div class="about-img-shell">
+          <div class="about-img-frame">
+            <img src="https://i.postimg.cc/Y9WgNbS3/IMG-20260403-WA0092.jpg" alt="Royalty Gospel City Ministry" loading="lazy"/>
+          </div>
+          <div class="about-tag-pill">
+            <span class="atp-num">Royal</span>
+            <span class="atp-lbl">Generation</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="lbl" data-rv="up">Who We Are</p>
+        <h2 class="sec-h" data-rv="up" data-delay="1">
+          We Are <span class="grd">Royalties</span>
+        </h2>
+        <div class="about-decl" data-rv="up" data-delay="2">
+          "I Am A Royalty, A Chosen Generation, A Holy Nation, A Peculiar Person,
+          The Word of God Is Working In Me, I Am Walking In Power."
+        </div>
+        <p class="sec-sub" data-rv="up" data-delay="3" style="margin-bottom:0">
+          Our mission is singular and powerful — Bringing Men Back To Honour.
+          We believe every soul carries royal identity and divine purpose.
+        </p>
+        <div class="about-pillars" style="margin-top:2rem">
+          <div class="ap" data-rv="up" data-delay="2">
+            <span class="ap-icon"><i class="fa fa-crown"></i></span>
+            <div class="ap-title">Royal Identity</div>
+            <div class="ap-desc">Awakening your divine royalty through the transforming Word.</div>
+          </div>
+          <div class="ap" data-rv="up" data-delay="3">
+            <span class="ap-icon"><i class="fa fa-bolt"></i></span>
+            <div class="ap-title">Spirit Power</div>
+            <div class="ap-desc">Demonstrations of the Spirit and signs in every gathering.</div>
+          </div>
+          <div class="ap" data-rv="up" data-delay="4">
+            <span class="ap-icon"><i class="fa fa-users"></i></span>
+            <div class="ap-title">Community</div>
+            <div class="ap-desc">Building a tight-knit family of honour, love, and purpose.</div>
+          </div>
+          <div class="ap" data-rv="up" data-delay="5">
+            <span class="ap-icon"><i class="fa fa-globe"></i></span>
+            <div class="ap-title">Global Reach</div>
+            <div class="ap-desc">Extending the kingdom beyond borders and generations.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GALLERY ════════════════════════════════════ -->
+<section id="gallery" class="sp">
+  <div class="cx">
+    <p class="lbl" data-rv="up">The Royaltys</p>
+    <h2 class="sec-h" data-rv="up" data-delay="1">Gallery <span class="grd">Moments</span></h2>
+    <p class="sec-sub" data-rv="up" data-delay="2">
+      Captured moments of power, praise, and community from Royalty Gospel City Int'l.
+    </p>
+
+    <div class="gal-folders">
+      <div class="gal-folder" data-rv="scale" onclick="openLB(0)">
+        <img src="https://i.postimg.cc/rFYRx59B/IMG_20260315_120436.jpg" alt="The Royaltys" loading="lazy"/>
+        <div class="gal-folder-icon"><i class="fa fa-expand"></i></div>
+        <div class="gal-folder-info">
+          <div class="gf-label">The Royaltys</div>
+          <div class="gf-sub">Kingdom Gathering</div>
+        </div>
+      </div>
+      <div class="gal-folder" data-rv="scale" data-delay="1" onclick="openLB(1)">
+        <img src="https://i.postimg.cc/XqPNGk0c/IMG_20260315_110213.jpg" alt="Kingdom Gathering" loading="lazy"/>
+        <div class="gal-folder-icon"><i class="fa fa-expand"></i></div>
+        <div class="gal-folder-info">
+          <div class="gf-label">Kingdom Assembly</div>
+          <div class="gf-sub">Power & Praise</div>
+        </div>
+      </div>
+      <div class="gal-folder" data-rv="scale" data-delay="2" onclick="openLB(2)">
+        <img src="https://i.postimg.cc/RhtRFvtb/IMG_20260403_WA0084.jpg" alt="Spirit Outpouring" loading="lazy"/>
+        <div class="gal-folder-icon"><i class="fa fa-expand"></i></div>
+        <div class="gal-folder-info">
+          <div class="gf-label">Spirit Outpouring</div>
+          <div class="gf-sub">Moves of God</div>
+        </div>
+      </div>
+      <div class="gal-folder" data-rv="scale" data-delay="3" onclick="openLB(3)">
+        <img src="https://i.postimg.cc/Nf76PJk5/IMG_20260315_110118.jpg" alt="Honour Restored" loading="lazy"/>
+        <div class="gal-folder-icon"><i class="fa fa-expand"></i></div>
+        <div class="gal-folder-info">
+          <div class="gf-label">Honour Restored</div>
+          <div class="gf-sub">Royal Generation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lb" role="dialog" aria-modal="true" aria-label="Gallery viewer">
+  <div id="lb-content">
+    <button id="lb-close" onclick="closeLB()" aria-label="Close">&times;</button>
+    <img id="lb-img" src="" alt="Gallery"/>
+    <div id="lb-nav-bar">
+      <button class="lb-nav-btn" onclick="lbPrev()" aria-label="Previous"><i class="fa fa-chevron-left"></i></button>
+      <div id="lb-dots"></div>
+      <button class="lb-nav-btn" onclick="lbNext()" aria-label="Next"><i class="fa fa-chevron-right"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SERMONS ════════════════════════════════════ -->
+<section id="sermons" class="sp">
+  <div class="cx">
+    <p class="lbl" data-rv="up">Messages</p>
+    <h2 class="sec-h" data-rv="up" data-delay="1">Featured <span class="grd">Sermons</span></h2>
+    <p class="sec-sub" data-rv="up" data-delay="2">
+      Life-changing messages that will transform your thinking and elevate your walk with God.
+    </p>
+    <div class="sermons-grid">
+      <div class="sc" data-rv="up" data-delay="1" onclick="playPod(0)">
+        <div class="sc-img-wrap">
+          <img class="sc-img" src="https://i.postimg.cc/rFYRx59B/IMG_20260315_120436.jpg" alt="Sermon 1" loading="lazy"/>
+          <div class="sc-play-ov"><div class="sc-play-icon"><i class="fa fa-play"></i></div></div>
+        </div>
+        <div class="sc-body">
+          <div class="sc-tag">Series · Royal Identity</div>
+          <h3 class="sc-title">You Are Royalty — Walk In It</h3>
+          <p class="sc-desc">Discover the fullness of your divine identity and step into the honour God has ordained for your life.</p>
+          <button class="btn-listen"><i class="fa fa-headphones"></i> LISTEN NOW</button>
+        </div>
+      </div>
+      <div class="sc" data-rv="up" data-delay="2" onclick="playPod(1)">
+        <div class="sc-img-wrap">
+          <img class="sc-img" src="https://i.postimg.cc/XqPNGk0c/IMG_20260315_110213.jpg" alt="Sermon 2" loading="lazy"/>
+          <div class="sc-play-ov"><div class="sc-play-icon"><i class="fa fa-play"></i></div></div>
+        </div>
+        <div class="sc-body">
+          <div class="sc-tag">Series · Honour</div>
+          <h3 class="sc-title">The Honour Restoration Code</h3>
+          <p class="sc-desc">How God restores the honour that was stolen from men — and the path back to righteous standing.</p>
+          <button class="btn-listen"><i class="fa fa-headphones"></i> LISTEN NOW</button>
+        </div>
+      </div>
+      <div class="sc" data-rv="up" data-delay="3" onclick="playPod(2)">
+        <div class="sc-img-wrap">
+          <img class="sc-img" src="https://i.postimg.cc/RhtRFvtb/IMG_20260403_WA0084.jpg" alt="Sermon 3" loading="lazy"/>
+          <div class="sc-play-ov"><div class="sc-play-icon"><i class="fa fa-play"></i></div></div>
+        </div>
+        <div class="sc-body">
+          <div class="sc-tag">Series · Power</div>
+          <h3 class="sc-title">Walking In Spiritual Authority</h3>
+          <p class="sc-desc">Understanding the full authority of every believer and how to wield it in the spiritual realm.</p>
+          <button class="btn-listen"><i class="fa fa-headphones"></i> LISTEN NOW</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PODCAST ════════════════════════════════════ -->
+<section id="podcast" class="sp">
+  <div class="cx">
+    <p class="lbl" data-rv="up">Audio</p>
+    <h2 class="sec-h" data-rv="up" data-delay="1">Latest <span class="grd">Messages</span></h2>
+    <p class="sec-sub" data-rv="up" data-delay="2">
+      Stream powerful messages from Apostle Dr Praise Ntia. Press play — the Word is alive.
+    </p>
+    <div class="pod-scroll" id="podScroll">
+      <div class="pod-track" id="podTrack"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PASTOR ═════════════════════════════════════ -->
+<section id="pastor" class="sp">
+  <div class="cx">
+    <div class="pastor-grid">
+      <div data-rv="left">
+        <p class="lbl">Leadership</p>
+        <div class="pastor-sm-label">Senior Pastor & Apostle</div>
+        <h2 class="pastor-name">APOSTLE DR<br/>PRAISE NTIA</h2>
+        <div class="pastor-quote">
+          <span class="pq-mark">"</span>
+          <p class="pq-text">"My Word Is a Law In The Spiritual Realm."</p>
+          <div class="pq-line"></div>
+        </div>
+        <p class="sec-sub" style="margin-bottom:2.8rem">
+          A man of God commissioned to restore honour to men and awaken nations to their royal identity.
+          Marked by the Word, the Spirit, and uncompromising kingdom authority across generations.
+        </p>
+        <a href="https://www.facebook.com/share/1HJzxbu5Jm/" target="_blank" rel="noopener" class="btn btn-primary">
+          <i class="fab fa-facebook-f"></i> CONNECT WITH APOSTLE
+        </a>
+      </div>
+      <div data-rv="right">
+        <div class="pastor-img-wrap">
+          <div class="pastor-img-frame">
+            <img src="https://i.postimg.cc/Y9WgNbS3/IMG-20260403-WA0092.jpg" alt="Apostle Dr Praise Ntia" loading="lazy"/>
+            <div class="pastor-img-glow"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MARQUEE — FULLY VISIBLE ═══════════════════ -->
+<div class="mq-section">
+  <div class="mq-track" id="mqTrack">
+    <span class="mq-word">ROYALTY <span class="accent">GOSPEL</span> CITY&nbsp;</span>
+    <span class="mq-sep">•&nbsp;</span>
+    <span class="mq-word">BRINGING MEN BACK <span class="accent">TO HONOUR</span>&nbsp;</span>
+    <span class="mq-sep">•&nbsp;</span>
+    <span class="mq-word">ROYALTY <span class="accent">GOSPEL</span> CITY&nbsp;</span>
+    <span class="mq-sep">•&nbsp;</span>
+    <span class="mq-word">BRINGING MEN BACK <span class="accent">TO HONOUR</span>&nbsp;</span>
+    <span class="mq-sep">•&nbsp;</span>
+    <span class="mq-word">ROYALTY <span class="accent">GOSPEL</span> CITY&nbsp;</span>
+    <span class="mq-sep">•&nbsp;</span>
+  </div>
+</div>
+
+<!-- ══ FOOTER ═════════════════════════════════════ -->
+<footer id="footer">
+  <div class="footer-grid">
+    <div>
+      <div style="display:flex;align-items:center;gap:.85rem;margin-bottom:1.2rem">
+        <img src="https://i.postimg.cc/J4xL48QC/20260403-210354.png"
+             style="width:48px;height:48px;border-radius:50%;filter:drop-shadow(0 0 8px rgba(43,74,255,.4))" alt="Logo"/>
+        <div class="f-brand-name">ROYALTY<br/>GOSPEL CITY INT'L</div>
+      </div>
+      <p class="f-desc">Raising a generation of royalties — walking in honour, power, and divine purpose through the Word and the Spirit of God.</p>
+      <div class="f-socials">
+        <a class="f-soc" href="https://www.facebook.com/share/1HJzxbu5Jm/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a class="f-soc" href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a class="f-soc" href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a class="f-soc" href="https://wa.me/2348080563199" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div>
+      <div class="f-col-title">Navigation</div>
+      <ul class="f-links">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#sermons">Sermons</a></li>
+        <li><a href="#pastor">Our Pastor</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="f-col-title">Services</div>
+      <ul class="f-links">
+        <li><a href="#">Sunday 8:00 AM</a></li>
+        <li><a href="#">Wednesday 6:00 PM</a></li>
+        <li><a href="https://www.facebook.com/share/1HJzxbu5Jm/" target="_blank" rel="noopener">Prayer Line</a></li>
+        <li><a href="https://www.facebook.com/share/1HJzxbu5Jm/" target="_blank" rel="noopener">Give Online</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="f-col-title">Contact</div>
+      <ul class="f-links">
+        <li><a href="tel:+2348080563199">+234 808 056 3199</a></li>
+        <li><a href="https://wa.me/2348080563199" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="#">Akwa Ibom State</a></li>
+        <li><a href="#">Nigeria</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-divider"></div>
+  <div class="f-bottom">
+    <span class="f-copy">© 2026 Royalty Gospel City Int'l. All Rights Reserved.</span>
+    <span class="f-copy">Bringing Men Back To Honour</span>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/2348080563199" target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- ══ SCRIPTS ════════════════════════════════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
+
+<script>
+/* ═══════════════════════════════════════════════
+   SMOOTH SCROLL ENGINE (Lenis-inspired)
+═══════════════════════════════════════════════ */
+class SmoothScroller {
+  constructor() {
+    this.cur = window.scrollY;
+    this.tgt = window.scrollY;
+    this.ease = 0.078;
+    this.locked = false;
+    this._touch = 0;
+    this._raf = null;
+    this._init();
+  }
+  _init() {
+    window.addEventListener('wheel', e => {
+      if (this.locked) return;
+      e.preventDefault();
+      this.tgt = Math.max(0, Math.min(this.tgt + e.deltaY * 1.05, this._max()));
+    }, { passive: false });
+    window.addEventListener('touchstart', e => { this._touch = e.touches[0].clientY; }, { passive: true });
+    window.addEventListener('touchmove', e => {
+      if (this.locked) return;
+      const dy = (this._touch - e.touches[0].clientY) * 1.6;
+      this._touch = e.touches[0].clientY;
+      this.tgt = Math.max(0, Math.min(this.tgt + dy, this._max()));
+    }, { passive: true });
+    this._tick();
+  }
+  _max() { return Math.max(0, document.body.scrollHeight - window.innerHeight); }
+  _tick() {
+    this.cur += (this.tgt - this.cur) * this.ease;
+    if (Math.abs(this.tgt - this.cur) < 0.3) this.cur = this.tgt;
+    window.scrollTo(0, this.cur);
+    this._raf = requestAnimationFrame(() => this._tick());
+  }
+  to(y, offset = 70) {
+    this.tgt = Math.max(0, Math.min(y - offset, this._max()));
+  }
+}
+
+let SS = null;
+
+/* ═══════════════════════════════════════════════
+   PRELOADER
+═══════════════════════════════════════════════ */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('preloader').classList.add('gone');
+    // Only use smooth scroll on non-touch desktop
+    if (window.innerWidth > 768 && !navigator.maxTouchPoints) {
+      SS = new SmoothScroller();
+    }
+    initHeroGSAP();
+    initReveal();
+    initMarquee();
+    buildPodcasts();
+    initLightboxDots();
+  }, 2800);
+});
+
+/* ═══════════════════════════════════════════════
+   SCROLL TO HELPER
+═══════════════════════════════════════════════ */
+function sTo(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const top = el.getBoundingClientRect().top + window.scrollY;
+  if (SS) SS.to(top); else window.scrollTo({ top: top - 70, behavior: 'smooth' });
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if (!el) return;
+    e.preventDefault();
+    const top = el.getBoundingClientRect().top + window.scrollY;
+    if (SS) SS.to(top); else window.scrollTo({ top: top - 70, behavior: 'smooth' });
+  });
+});
+
+/* ═══════════════════════════════════════════════
+   NAVBAR
+═══════════════════════════════════════════════ */
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('stuck', window.scrollY > 60);
+}, { passive: true });
+
+const hbg = document.getElementById('hbg');
+const mmenu = document.getElementById('mmenu');
+hbg.addEventListener('click', () => {
+  hbg.classList.toggle('open');
+  mmenu.classList.toggle('open');
+  if (SS) SS.locked = mmenu.classList.contains('open');
+});
+document.getElementById('mclose').addEventListener('click', () => {
+  hbg.classList.remove('open'); mmenu.classList.remove('open');
+  if (SS) SS.locked = false;
+});
+function cM() {
+  hbg.classList.remove('open'); mmenu.classList.remove('open');
+  if (SS) SS.locked = false;
+}
+
+/* ═══════════════════════════════════════════════
+   HERO GSAP ANIMATIONS
+═══════════════════════════════════════════════ */
+function initHeroGSAP() {
+  gsap.registerPlugin(ScrollTrigger);
+  const items = ['#hEye','#hHead','#hTag','#hSup','#hCtas','#hStats'];
+  items.forEach((s, i) => {
+    gsap.fromTo(s,
+      { opacity: 0, y: 60 },
+      { opacity: 1, y: 0, duration: 1.1, ease: 'power3.out', delay: 0.12 + i * 0.13 }
+    );
+  });
+  // Hero image cinematic zoom
+  gsap.to('#heroImg', { scale: 1.08, duration: 16, ease: 'none', repeat: -1, yoyo: true });
+  // Parallax
+  ScrollTrigger.create({
+    trigger: '#hero', start: 'top top', end: 'bottom top',
+    onUpdate: s => gsap.set('#heroImg', { y: s.progress * 100 })
+  });
+  // Count-up stats animation
+  initCountUp();
+}
+
+/* ═══════════════════════════════════════════════
+   COUNT-UP ANIMATION
+═══════════════════════════════════════════════ */
+function initCountUp() {
+  const stats = [
+    { el: document.querySelector('.hero-stat:nth-child(1) .stat-num'), end: 30, suffix: '+', prefix: '1M', isMillion: true },
+    { el: document.querySelector('.hero-stat:nth-child(2) .stat-num'), end: 30, suffix: '+' },
+  ];
+  stats.forEach(stat => {
+    if (!stat.el) return;
+    let start = 0;
+    const duration = 2000;
+    const startTime = performance.now();
+    const tick = (now) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.floor(start + (stat.end - start) * eased);
+      if (stat.isMillion) {
+        stat.el.textContent = '1M+';
+      } else {
+        stat.el.textContent = current + (stat.suffix || '');
+      }
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    // Trigger when hero stats visible
+    ScrollTrigger.create({
+      trigger: '#hStats',
+      start: 'top 90%',
+      onEnter: () => requestAnimationFrame(tick),
+      once: true
+    });
+  });
+}
+
+/* ═══════════════════════════════════════════════
+   INTERSECTION OBSERVER REVEALS (Framer-style)
+═══════════════════════════════════════════════ */
+function initReveal() {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+  document.querySelectorAll('[data-rv]').forEach(el => obs.observe(el));
+}
+
+/* ═══════════════════════════════════════════════
+   MARQUEE (GSAP seamless loop)
+═══════════════════════════════════════════════ */
+function initMarquee() {
+  const track = document.getElementById('mqTrack');
+  // Clone for seamless loop
+  const clone = track.innerHTML;
+  track.innerHTML = clone + clone;
+  const half = track.scrollWidth / 2;
+  gsap.to(track, {
+    x: -half,
+    duration: 40,
+    ease: 'none',
+    repeat: -1,
+    modifiers: { x: gsap.utils.unitize(x => parseFloat(x) % half) }
+  });
+}
+
+/* ═══════════════════════════════════════════════
+   GALLERY LIGHTBOX
+═══════════════════════════════════════════════ */
+const galImgs = [
+  { src: 'https://i.postimg.cc/rFYRx59B/IMG_20260315_120436.jpg', cap: 'The Royaltys' },
+  { src: 'https://i.postimg.cc/XqPNGk0c/IMG_20260315_110213.jpg', cap: 'Kingdom Assembly' },
+  { src: 'https://i.postimg.cc/RhtRFvtb/IMG_20260403_WA0084.jpg', cap: 'Spirit Outpouring' },
+  { src: 'https://i.postimg.cc/Nf76PJk5/IMG_20260315_110118.jpg', cap: 'Honour Restored' },
+];
+let lbIdx = 0;
+
+function initLightboxDots() {
+  const dotsEl = document.getElementById('lb-dots');
+  dotsEl.innerHTML = galImgs.map((_, i) =>
+    `<div class="lb-dot${i === 0 ? ' active' : ''}" onclick="openLB(${i})"></div>`
+  ).join('');
+}
+
+function openLB(i) {
+  lbIdx = i;
+  const lb = document.getElementById('lb');
+  const img = document.getElementById('lb-img');
+  img.src = galImgs[i].src;
+  img.alt = galImgs[i].cap;
+  lb.classList.add('open');
+  updateLbDots();
+  document.body.style.overflow = 'hidden';
+  if (SS) SS.locked = true;
+  img.style.animation = 'none';
+  void img.offsetHeight;
+  img.style.animation = 'lbIn .5s var(--ease-spring)';
+}
+function closeLB() {
+  document.getElementById('lb').classList.remove('open');
+  document.body.style.overflow = '';
+  if (SS) SS.locked = false;
+}
+function lbPrev() { lbIdx = (lbIdx - 1 + galImgs.length) % galImgs.length; openLB(lbIdx); }
+function lbNext() { lbIdx = (lbIdx + 1) % galImgs.length; openLB(lbIdx); }
+function updateLbDots() {
+  document.querySelectorAll('.lb-dot').forEach((d, i) => d.classList.toggle('active', i === lbIdx));
+}
+document.getElementById('lb').addEventListener('click', e => { if (e.target.id === 'lb') closeLB(); });
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lb').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLB();
+  if (e.key === 'ArrowLeft') lbPrev();
+  if (e.key === 'ArrowRight') lbNext();
+});
+
+/* ═══════════════════════════════════════════════
+   PODCAST PLAYER — REAL AUDIO
+═══════════════════════════════════════════════ */
+const podData = [
+  {
+    ep: 'EP 01 · ROYAL IDENTITY',
+    title: 'You Are Royalty — Walk In It',
+    src: 'https://cropgif.net/audio/1775832966064-8655d1fc-8d72-4e6b-9cc6-f5dae63f9896.opus',
+    type: 'audio/ogg; codecs=opus'
+  },
+  {
+    ep: 'EP 02 · HONOUR',
+    title: 'The Honour Restoration Code',
+    src: 'https://cropgif.net/audio/1775833070226-f8801542-3040-49fc-8def-f9e38a5e6d34.opus',
+    type: 'audio/ogg; codecs=opus'
+  },
+  {
+    ep: 'EP 03 · AUTHORITY',
+    title: 'Walking In Spiritual Authority',
+    src: 'https://cropgif.net/audio/1775833101106-cf2624a4-c438-4107-8cd7-82baec8b66e3.opus',
+    type: 'audio/ogg; codecs=opus'
+  },
+  {
+    ep: 'EP 04 · PURPOSE',
+    title: 'Chosen For This Moment',
+    src: 'https://cropgif.net/audio/1775833314585-7c970bb9-0e94-4018-8584-60afd18c8395.opus',
+    type: 'audio/ogg; codecs=opus'
+  },
+  {
+    ep: 'EP 05 · WORD',
+    title: 'The Word Is Working In You',
+    src: 'https://cropgif.net/audio/1775833367998-7e0c865b-0ab5-4946-967f-556d59e02af4.opus',
+    type: 'audio/ogg; codecs=opus'
+  }
+];
+
+const audioEls = [];   // Audio elements
+const cardEls  = [];   // Card DOM elements
+let   curPod   = -1;   // Currently playing index
+
+function ft(s) {
+  if (!isFinite(s) || s < 0) return '0:00';
+  const m = Math.floor(s / 60), sec = Math.floor(s % 60);
+  return `${m}:${String(sec).padStart(2, '0')}`;
+}
+
+function buildWave(id) {
+  let html = '';
+  for (let i = 0; i < 22; i++) {
+    const h  = (Math.random() * 26 + 7).toFixed(1);
+    const ws = (Math.random() * .5 + .45).toFixed(2);
+    const wd = (Math.random() * .55).toFixed(2);
+    html += `<div class="wb" style="height:${h}px;--ws:${ws}s;--wd:${wd}s"></div>`;
+  }
+  return html;
+}
+
+function buildPodcasts() {
+  const track = document.getElementById('podTrack');
+  podData.forEach((p, i) => {
+    // Audio element
+    const ae = new Audio();
+    ae.preload = 'none';
+    ae.crossOrigin = 'anonymous';
+    const src = document.createElement('source');
+    src.src = p.src;
+    src.type = p.type;
+    ae.appendChild(src);
+    audioEls.push(ae);
+
+    // Card HTML
+    const card = document.createElement('div');
+    card.className = 'pod-card';
+    card.id = `pod${i}`;
+    card.innerHTML = `
+      <div class="pod-ep">${p.ep}</div>
+      <div class="pod-title">${p.title}</div>
+      <div class="pod-dur" id="pdur${i}">Apostle Dr Praise Ntia</div>
+      <div class="waveform">${buildWave(i)}</div>
+      <div class="pod-prog" id="pbar${i}">
+        <div class="pod-prog-fill" id="pfill${i}"></div>
+        <div class="pod-prog-thumb" id="pthumb${i}" style="left:0%"></div>
+      </div>
+      <div class="pod-controls">
+        <span class="pod-time" id="ptime${i}">0:00 / --:--</span>
+        <div class="pod-btn-group">
+          <button class="pod-skip" onclick="skip(${i},-10)" title="Back 10s"><i class="fa fa-rotate-left"></i><span style="font-size:.55rem;margin-left:1px">10</span></button>
+          <button class="pod-play-btn" id="pbtn${i}" onclick="togglePod(${i})" aria-label="Play">
+            <i class="fa fa-play" id="picon${i}"></i>
+          </button>
+          <button class="pod-skip" onclick="skip(${i},10)" title="Forward 10s"><i class="fa fa-rotate-right"></i><span style="font-size:.55rem;margin-left:1px">10</span></button>
+        </div>
+      </div>
+      <div class="pod-status ready" id="pst${i}">Press play to listen</div>`;
+    track.appendChild(card);
+    cardEls.push(card);
+
+    // Event listeners on audio element
+    ae.addEventListener('loadedmetadata', () => {
+      document.getElementById(`pdur${i}`).textContent = `${ft(ae.duration)} · Apostle Dr Praise Ntia`;
+      document.getElementById(`ptime${i}`).textContent = `0:00 / ${ft(ae.duration)}`;
+    });
+    ae.addEventListener('timeupdate', () => {
+      if (curPod !== i) return;
+      const pct = ae.duration ? (ae.currentTime / ae.duration) * 100 : 0;
+      document.getElementById(`pfill${i}`).style.width = pct + '%';
+      document.getElementById(`pthumb${i}`).style.left  = pct + '%';
+      document.getElementById(`ptime${i}`).textContent   = `${ft(ae.currentTime)} / ${ft(ae.duration)}`;
+    });
+    ae.addEventListener('ended', () => { resetCard(i); });
+    ae.addEventListener('waiting', () => { setStatus(i, 'loading', 'Buffering…'); });
+    ae.addEventListener('playing', () => { setStatus(i, 'ready', ''); });
+    ae.addEventListener('error',   () => {
+      setStatus(i, 'error', '⚠ Source unavailable');
+      cardEls[i].classList.add('error');
+      resetCard(i);
+    });
+    ae.addEventListener('canplay', () => { setStatus(i, 'ready', ''); });
+
+    // Progress bar seek
+    document.getElementById(`pbar${i}`).addEventListener('click', e => seekPod(i, e));
+  });
+
+  // Drag scroll on pod track
+  initPodDrag();
+}
+
+function setStatus(i, cls, text) {
+  const el = document.getElementById(`pst${i}`);
+  el.className = `pod-status ${cls}`;
+  el.textContent = text;
+}
+
+function resetCard(i) {
+  document.getElementById(`picon${i}`).className = 'fa fa-play';
+  cardEls[i].classList.remove('active');
+  if (curPod === i) curPod = -1;
+}
+
+function stopAll(except = -1) {
+  audioEls.forEach((ae, i) => {
+    if (i === except) return;
+    ae.pause();
+    resetCard(i);
+  });
+}
+
+function togglePod(i) {
+  const ae   = audioEls[i];
+  const icon = document.getElementById(`picon${i}`);
+  const isPlaying = !ae.paused;
+
+  stopAll(i);
+
+  if (isPlaying) {
+    ae.pause();
+    resetCard(i);
+    return;
+  }
+
+  curPod = i;
+  icon.className = 'fa fa-pause';
+  cardEls[i].classList.add('active');
+  setStatus(i, 'loading', 'Loading…');
+
+  // Lazy load: set src only when first played
+  if (!ae.src || ae.networkState === HTMLMediaElement.NETWORK_EMPTY) {
+    ae.load();
+  }
+
+  ae.play().then(() => {
+    setStatus(i, 'ready', '');
+  }).catch(err => {
+    console.warn('Audio play error:', err.message);
+    setStatus(i, 'error', '⚠ Playback failed');
+    resetCard(i);
+  });
+}
+
+function seekPod(i, e) {
+  const bar  = document.getElementById(`pbar${i}`);
+  const rect = bar.getBoundingClientRect();
+  const pct  = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+  const ae   = audioEls[i];
+  if (ae.duration && isFinite(ae.duration)) {
+    ae.currentTime = pct * ae.duration;
+  }
+  document.getElementById(`pfill${i}`).style.width = (pct * 100) + '%';
+  document.getElementById(`pthumb${i}`).style.left  = (pct * 100) + '%';
+}
+
+function skip(i, sec) {
+  const ae = audioEls[i];
+  if (ae.duration) {
+    ae.currentTime = Math.max(0, Math.min(ae.currentTime + sec, ae.duration));
+  }
+}
+
+function playPod(i) {
+  sTo('podcast');
+  setTimeout(() => togglePod(i), 650);
+}
+
+/* Drag scroll for pod track */
+function initPodDrag() {
+  const el = document.getElementById('podScroll');
+  let isDragging = false, startX = 0, scrollLeft = 0;
+  el.addEventListener('mousedown', e => {
+    isDragging = true; startX = e.pageX - el.offsetLeft; scrollLeft = el.scrollLeft;
+    el.style.cursor = 'grabbing';
+  });
+  el.addEventListener('mouseleave', () => { isDragging = false; el.style.cursor = 'grab'; });
+  el.addEventListener('mouseup',    () => { isDragging = false; el.style.cursor = 'grab'; });
+  el.addEventListener('mousemove',  e => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - el.offsetLeft;
+    el.scrollLeft = scrollLeft - (x - startX) * 1.2;
+  });
+}
+</script>
+</body>
+</html>
